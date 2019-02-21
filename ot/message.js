@@ -1,9 +1,9 @@
 
 export default class OTMessage {
 
-    constructor(op, lastKnownState) {
+    constructor(op, revision) {
         this.op = op;
-        this.lastKnownState = lastKnownState; // index of last known server state
+        this.revision = revision; // index of last known server state
     }
 
 }

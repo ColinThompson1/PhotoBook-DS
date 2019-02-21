@@ -1,30 +1,29 @@
 import {OTController} from "./ot_controller";
+import OTMessage from "./message";
 
 export class OTControllerServer extends OTController {
 
     constructor(messagingService) {
         super();
-        this.applied = {};
-        // this.outgoing = null;
-        // this.pending = [];
+        this.history = [];
+        this.currentRevision = 0;
         this.messagingService = messagingService;
     }
 
-
     sendAll(op) {
-
+        this.currentRevision++;
+        let msg = new OTMessage(op, this.currentRevision);
+        this.messagingService.send(msg)
     }
 
     recieve(msg) {
-        let newOps = this.applied.splice(msg.lastKnownState + 1);
+        let newOps = this.history.splice(msg.revision);
         let composed = newOps.reduce(this.compose);
-        let [clientP, serverP] = this.transform(msg.op, composed);
-        //apply it
+        let [clientP,] = this.transform(msg.op, composed);
+
         apply(clientP);
 
         this.sendAll(clientP);
     }
-
-
 
 }

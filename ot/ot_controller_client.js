@@ -5,6 +5,7 @@ export class OTControllerClient extends OTController {
 
     constructor(messagingService) {
         super();
+        this.lastSyncedRevision = 0;
         this.outgoing = null;
         this.bridge = null;
         this.buffer = null;
@@ -29,7 +30,7 @@ export class OTControllerClient extends OTController {
                 this.buffer = op;
             }
         } else {
-            this.outgoing = new OTMessage(op, 0);
+            this.outgoing = new OTMessage(op, this.lastSyncedRevision);
             this.messagingService.send(this.outgoing);
         }
     }
@@ -38,7 +39,7 @@ export class OTControllerClient extends OTController {
         // Check if our message has been acknowledged or another message
         if (this.outgoing && (msg.op.id === this.outgoing.op.id)) {
             // Our own message
-            this.outgoing = new OTMessage(this.buffer, 0); //todo 0
+            this.outgoing = new OTMessage(this.buffer, this.lastSyncedRevision);
             this.messagingService.send(this.outgoing)
         } else {
 
@@ -56,6 +57,8 @@ export class OTControllerClient extends OTController {
 
             apply(serverP)
         }
+
+        this.lastSyncedRevision = msg.revision;
     }
 
 }

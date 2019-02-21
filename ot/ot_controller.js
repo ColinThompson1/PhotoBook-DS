@@ -2,7 +2,9 @@
 export class OTController {
 
 
-    constructor() {}
+    constructor() {
+
+    }
 
     compose(op1, op2) {
 
