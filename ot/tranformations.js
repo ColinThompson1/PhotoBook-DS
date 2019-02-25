@@ -1,8 +1,22 @@
 import _ from 'lodash'
 
-function transform(op1, op2) {
 
+//op1 = recieved operation
+//op2 = local operation
+function transform(op1, op2) {
+    if (op1.type == "insertL" && op2.type == "insertL"){
+        transformInsInsL(op1, op2);
+    }else if(op1.type == "insertL" && op2.type == "deleteL"){
+        transformInsDelL(op1, op2);
+    }else if(op1.type == "deleteL" && op2.type == "insertL"){
+        transformDelInsL(op1, op2);
+    }else if(op1.type == "deleteL" && op2.type == "deleteL"){
+        transformDelDelL(op1, op2);
+    }
 }
+
+//CURRENTLY ONLY INCRS BY 1
+//NEEDS TO INCRS BY LENGTH OF TEXT
 
 /**
  * Transformation of two insert operations on a list
