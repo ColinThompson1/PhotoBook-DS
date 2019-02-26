@@ -1,17 +1,15 @@
 import _ from 'lodash'
 
 
-//op1 = recieved operation
-//op2 = local operation
 function transform(op1, op2) {
     if (op1.type == "insertL" && op2.type == "insertL"){
-        transformInsInsL(op1, op2);
+        return transformInsInsL(op1, op2);
     }else if(op1.type == "insertL" && op2.type == "deleteL"){
-        transformInsDelL(op1, op2);
+        return transformInsDelL(op1, op2);
     }else if(op1.type == "deleteL" && op2.type == "insertL"){
-        transformDelInsL(op1, op2);
+        return transformDelInsL(op1, op2);
     }else if(op1.type == "deleteL" && op2.type == "deleteL"){
-        transformDelDelL(op1, op2);
+        return transformDelDelL(op1, op2);
     }
 }
 
@@ -21,17 +19,20 @@ function transform(op1, op2) {
 /**
  * Transformation of two insert operations on a list
  */
+
+
+ //This one might work now.
 function transformInsInsL(opIns1, opIns2) {
 
     let opIns1P = _.cloneDeep(opIns1);
     let opIns2P = _.cloneDeep(opIns2);
 
     if (opIns1.position <= opIns2.position) {
-        opIns2P.position = opIns2.position + 1;
+        opIns2P.position = parseInt(opIns2.position) + 1;
         return [opIns1P, opIns2P];
     } else {
-        opIns1P.position = opIns1.position + 1;
-        return [opIns1P, opIns2P];
+        opIns1P.position = parseInt(opIns1.position) + 1;
+        return [opIns2P, opIns1P];
     }
 }
 
@@ -47,7 +48,7 @@ function transformInsDelL(opIns, opDel) {
         opDelP.position = opDel.position + 1;
         return [opInsP, opDelP];
     } else {
-        opInsP.position = opIns.position - 1;
+        opInsP.position = opIns.position -1;
         return [opInsP, opDelP];
     }
 
@@ -89,6 +90,7 @@ function transformDelDelL(opDel1, opDel2) {
 }
 
 module.exports = {
+    transform,
     transformInsInsL,
     transformInsDelL,
     transformDelInsL,
