@@ -45,8 +45,8 @@ function transformInsDelL(opIns, opDel) {
     let opDelP = _.cloneDeep(opDel);
 
     if (opIns.position <= opDel.position) {
-        opDelP.position = opDel.position + 1;
-        return [opInsP, opDelP];
+        opDelP.position = parseInt(opDel.position) + 1;
+        return [opDelP, opInsP];
     } else {
         opInsP.position = opIns.position -1;
         return [opInsP, opDelP];
@@ -64,9 +64,9 @@ function transformDelInsL(opDel, opIns) {
 
     if (opDel.position < opIns.position) {
         opInsP.position = opIns.position - 1;
-        return [opDelP, opInsP];
+        return [opInsP, opDelP];
     } else {
-        opDelP.position = opDel.position + 1;
+        opDelP.position = parseInt(opDel.position) + 1;
         return [opDelP, opInsP];
     }
 }

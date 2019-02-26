@@ -11,8 +11,9 @@ describe("transformations of lists", () => {
 
         
 
-        let opIns1 = new OpInsertL('1', 'b', '1');
-        let opIns2 = new OpInsertL('2', 'Z', '0');
+        
+        let opIns1 = new OpDeleteL('2', 'a', '0');
+        let opIns2 = new OpDeleteL('1', 'b', '1');
 
         console.log(opIns1.position);
         console.log(opIns2.position);

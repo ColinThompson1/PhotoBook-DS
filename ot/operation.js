@@ -43,7 +43,7 @@ export class OpDeleteL extends Operation {
     }
 
     apply(context) {
-        context.splice(this.position, this.position);
+        context.splice(this.position, 1);
         return context
     }
 
