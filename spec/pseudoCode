@@ -1,0 +1,48 @@
+
+def transform(left, top)
+  left = Array(left)
+  top = Array(top)
+  
+  return [left, top] if left.empty? || top.empty?
+
+  if left.length == 1 && top.length == 1
+    right = transform_operation(left.first, top.first, true)
+    bottom = transform_operation(top.first, left.first, false)
+    return [Array(right), Array(bottom)]
+  end
+
+  right = []
+  bottom = []
+
+  left.each do |left_op|
+    bottom = []
+    
+    top.each do |top_op|
+      right_op, bottom_op = transform(left_op, top_op)
+      left_op = right_op
+      bottom.concat(bottom_op)
+    end
+    
+    right.concat(left_op)
+    top = bottom
+  end
+
+  [right, bottom]
+end
+
+
+//pseudo code for multi transform
+/*
+ * //2 lists
+ * top[]  left[] 
+ * right[] bottom[]
+ * tansform.top() transform.left() == bottom && right
+ * push bottom.bottom() // push element to bottom of list 
+ * transform.newLeft(top) // where new left is the transformed left 
+ * push bottom.bottom() // push element to bottom of list
+ * do while(!top.empty())
+ * if( end of row )
+ * push newLeft.right[]
+ * top[] = bottom[]
+ * 
+ */
