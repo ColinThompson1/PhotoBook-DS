@@ -88,3 +88,19 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+var io = require('socket.io').listen(server);
+
+io.on('connection', function (socket) {
+  console.log("New connection.");
+
+  socket.on('disconnect', function () {
+    console.log("Disconnect.");
+  });
+
+  socket.on('edit', function (msg) {
+    console.log("Edit request. Message: " +  msg);
+  })
+  
+});
+
