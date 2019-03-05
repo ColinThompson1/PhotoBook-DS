@@ -3,6 +3,12 @@
 
 Node dataservice for a collaborative photobook maker. Implementation of Operational Transformation.
 
+### Setup
+
+#### Env Variables
+- DB_CON_STR: The mongodb connection string
+
+
 ###Resources
 
 * http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation (Good Starting Point)
