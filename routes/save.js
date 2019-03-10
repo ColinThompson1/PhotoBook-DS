@@ -12,14 +12,6 @@ router.ws('/editor', function(ws, req) {
     const stream = new WebSocketJSONStream(ws);
     backend.listen(stream);
 
-    ws.on('message', function(msg) {
-        console.log(msg);
-        ws.send(msg);
-    });
-
-    ws.on('open', () => {
-        console.log('hi')
-    })
 });
 
 module.exports = router;
