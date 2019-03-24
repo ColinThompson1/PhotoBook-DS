@@ -5,8 +5,24 @@ Node dataservice for a collaborative photobook maker. Implementation of Operatio
 
 ### Setup
 
-#### Env Variables
+##### Env Variables
 - DB_CON_STR: The mongodb connection string
+- USE_SSL: truthy (chrome requires wss for websockets)
+
+##### Certs
+Create a cert.pem and key.pem and place in the sslcert directory
+
+#### Patch
+Patch json1 by a adding the following to type exports
+
+`uri: "http://sharejs.org/types/JSONv1",`
+
+##### Starting
+
+`npm install`
+
+`npm run start`
+
 
 
 ###Resources
