@@ -23,8 +23,6 @@ Patch json1 by a adding the following to type exports
 
 `npm run start`
 
-
-
 ### Resources
 
 * http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation (Good Starting Point)
