@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
         else {
             const newUser = new User({
                 username: username,
-                password: password
+                password: password,
+                photobooks: []
             })
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err)
@@ -64,5 +65,21 @@ router.post('/logout', (req, res) => {
         res.send({ msg: 'no user to log out' })
     }
 })
+
+router.post('/pb', (req, res) => {
+    const {username, docID} = req.body;
+    User.update({username: username}, {$push: {photobooks: docID}}, function(err, res){
+        if(err){
+            console.log(err)
+        }else{
+
+        }
+
+    })
+    res.send()
+
+})
+
+
 
 module.exports = router;
