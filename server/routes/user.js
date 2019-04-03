@@ -80,6 +80,23 @@ router.post('/pb', (req, res) => {
 
 })
 
+router.get('/test', (req, res) =>{
+    var uname = req.query.username;
+    User.find({username: uname}, (err,user) =>{
+        if(err){
+            //console.log(err)
+            res.send(err)
+        }else{
+            var booksToSend = {
+                photobooks: user[0].photobooks
+            }
+            res.send(booksToSend)
+        }
+    })
+})
+
+
+
 
 
 module.exports = router;
