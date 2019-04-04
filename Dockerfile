@@ -15,6 +15,7 @@ COPY package*.json ./
 COPY . .
 
 ENV DB_CON_STR=mongodb://mongouser:il0vemongoDB!@cpsc559-mongodbatlas-cluster-shard-00-00-r1lqr.azure.mongodb.net:27017,cpsc559-mongodbatlas-cluster-shard-00-01-r1lqr.azure.mongodb.net:27017,cpsc559-mongodbatlas-cluster-shard-00-02-r1lqr.azure.mongodb.net:27017/test?ssl=true&replicaSet=CPSC559-mongodbAtlas-cluster-shard-0&authSource=admin&retryWrites=true
+ENV DB_CON_STR=mongodb://mongouser:il0vemongoDB!@cpsc559paid-shard-00-00-r1lqr.azure.mongodb.net:27017,cpsc559paid-shard-00-01-r1lqr.azure.mongodb.net:27017,cpsc559paid-shard-00-02-r1lqr.azure.mongodb.net:27017/photobook?ssl=true&replicaSet=Cpsc559Paid-shard-0&authSource=admin&retryWrites=true
 ENV USE_SSL=true
 
 EXPOSE 3002
