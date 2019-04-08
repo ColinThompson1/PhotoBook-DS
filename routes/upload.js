@@ -20,7 +20,7 @@ const handleError = (err, res) => {
         error: err
     })
 };
-
+//blob code to send a upload request to Azure
 router.post('/', uploadStrategy, (req, res) => {
 
     const stream = getStream(req.file.buffer)
