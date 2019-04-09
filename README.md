@@ -1,15 +1,29 @@
 
-#PhotoBook Maker  Dataservice
+# PhotoBook Maker  Dataservice
 
 Node dataservice for a collaborative photobook maker. Implementation of Operational Transformation.
 
 ### Setup
 
-#### Env Variables
+##### Env Variables
 - DB_CON_STR: The mongodb connection string
+- USE_SSL: truthy (chrome requires wss for websockets)
 
+##### Certs
+Create a cert.pem and key.pem and place in the sslcert directory
 
-###Resources
+##### Patch
+Patch json1 by a adding the following to type exports
+
+`uri: "http://sharejs.org/types/JSONv1",`
+
+##### Starting
+
+`npm install`
+
+`npm run start`
+
+### Resources
 
 * http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation (Good Starting Point)
 * https://arxiv.org/pdf/1512.05949.pdf (Function Transformations)
