@@ -27,27 +27,17 @@ const expressWs = require('express-ws')(app, server);
 
 app.use(bodyParser.json());
 
-const cors = require('cors');
-
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-app.use(cors(corsOptions));
-
 // Setup routes
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var saveRouter = require('./routes/save');
 var createRouter = require('./routes/create');
-var uploadRouter = require('./routes/upload');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/save', saveRouter);
 app.use('/create', createRouter);
-app.use('/upload', uploadRouter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

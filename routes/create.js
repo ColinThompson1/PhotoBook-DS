@@ -4,7 +4,7 @@ import backend from '../sharedb'
 const uuidv4 = require('uuid/v4');
 const connection = backend.connect();
 
-//generate a doc with a unique uuid
+
 router.post('', function (req, res) {
     const id = uuidv4();
     const doc = connection.get('doc', id);
