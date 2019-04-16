@@ -1,12 +1,20 @@
 
-#PhotoBook Maker  Dataservice
+# PhotoBook Maker  Dataservice
 
 Node dataservice for a collaborative photobook maker. Implementation of Operational Transformation.
 
-### Setup
+## URL 
+Navigate to: http://52.183.38.255/ to access our live Photobook App
+
+### Local Setup
 
 #### Env Variables
+- These come preconfigured
 - DB_CON_STR: The mongodb connection string
+- USE_SSL: true (chrome requires wss for websockets)
+- AZURE_STORAGE_CONNECTION_STRING: the connection string of your azure blob storage.
+- AZURE_BLOBL_CONTAINER_NAME: The name of the container in your azure blob storage to use.
+
 
 
 ###Resources
