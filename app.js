@@ -13,6 +13,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
+require('dotenv').config();
 
 let server;
 if (process.env.USE_SSL) {
@@ -27,6 +28,15 @@ if (process.env.USE_SSL) {
 const expressWs = require('express-ws')(app, server);
 
 app.use(bodyParser.json());
+
+const cors = require('cors');
+
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 // Setup routes
 
